@@ -3,18 +3,21 @@
 <head>
 <script>
   const LINKS = {
-    nagoya: { hotel: '#', transport: '#', tickets: '#' },
-    takayama: { hotel: '#', transport: '#', tickets: '#' },
-    kyoto: { hotel: '#', transport: '#', tickets: '#' },
-    osaka: { hotel: '#', transport: '#', tickets: '#' },
-    christmas: '#',
-    newYear: '#',
-    skiing: '#',
-    lunarNewYear: '#',
-    tokyoOnsen: '#',
-    threads: '#',
-    instagram: '#',
-    facebook: '#'
+    featured: 'https://www.trip.com/t/d17hXyLLKX2',
+    featuredTransport: 'https://www.trip.com/t/oXRJ1rOMKX2',
+    featuredSim: 'https://www.trip.com/t/3qfycDPMKX2',
+    nagoya: { hotel: 'https://www.trip.com/t/66QKkdELKX2', transport: 'https://www.trip.com/t/lSR2m2FLKX2', tickets: 'https://www.trip.com/t/hB0quSFLKX2' },
+    takayama: { hotel: 'https://www.trip.com/t/HVw4KsFLKX2', transport: 'https://www.trip.com/t/y0lU3JGLKX2', tickets: 'https://www.trip.com/t/JaAiAiGLKX2' },
+    kyoto: { hotel: 'https://www.trip.com/t/KbRhq7HLKX2', transport: 'https://www.trip.com/t/W8iYMbHLKX2', tickets: 'https://www.trip.com/t/9xUl40ILKX2' },
+    osaka: { hotel: 'https://www.trip.com/t/NyvY6TILKX2', transport: 'https://www.trip.com/t/RaqtcsILKX2', tickets: 'https://www.trip.com/t/4cteDJJLKX2' },
+    christmas: 'https://www.trip.com/t/s9SZlkJLKX2',
+    newYear: 'https://www.trip.com/t/Bax2HGKLKX2',
+    skiing: 'https://www.trip.com/t/wTUuFgKLKX2',
+    lunarNewYear: 'https://www.trip.com/t/PWVS48LLKX2',
+    tokyoOnsen: 'https://www.trip.com/t/AZYbjWLLKX2',
+    threads: 'https://www.threads.com/@xiaoyang.travel',
+    instagram: 'https://www.instagram.com/xiaoyang.travel/',
+    facebook: 'https://www.facebook.com/profile.php?id=61596301937461'
   };
 </script>
 <meta charset="utf-8">
@@ -70,6 +73,25 @@ a:focus-visible{outline:2px solid var(--gold);outline-offset:-3px}
     <h1>小楊的旅遊選物</h1>
     <p>我自己訂房都用 Trip，整理給你</p>
   </header>
+
+  <!-- 最新貼文主打推薦：每次 IG／FB 發新文，只改 LINKS.featured（trip_sub1 固定 bio_page_featured） -->
+  <section aria-label="最新貼文主打推薦">
+    <a class="feature" href="#" data-link="featured" style="min-height:96px;border-color:var(--gold);background:radial-gradient(ellipse at top right,#59432d,transparent 72%),#25231d">
+      <strong>最新貼文主打推薦</strong>
+    </a>
+  </section>
+
+  <!-- 第二順位：主打城市的交通票券與網卡。換主打城市時要改三個地方：
+       1) 下面 h2 和兩個按鈕文字裡的城市名「東京」
+       2) LINKS.featuredTransport、LINKS.featuredSim 換成新城市的短連結（trip_sub1 固定 bio_page_featured_transport／bio_page_featured_sim）
+       3) aria-label 裡的城市名 -->
+  <section aria-labelledby="featured-transport">
+    <h2 id="featured-transport">東京交通票券與網卡</h2>
+    <div class="links social" style="grid-template-columns:repeat(2,minmax(0,1fr))">
+      <a href="#" data-link="featuredTransport" aria-label="東京交通票券">東京交通票券</a>
+      <a href="#" data-link="featuredSim" aria-label="東京網卡">東京網卡</a>
+    </div>
+  </section>
 
   <section aria-labelledby="routes">
     <h2 id="routes">日本路線</h2>
