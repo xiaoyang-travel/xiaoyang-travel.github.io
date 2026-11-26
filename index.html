@@ -2,6 +2,7 @@
 <html lang="zh-Hant">
 <head>
 <script>
+  // 新增 Trip 短鏈前比對官方跳轉的目的地、本人 Allianceid／SID 和預期 trip_sub1。
   const LINKS = {
     featured: 'https://www.trip.com/t/d17hXyLLKX2',
     featuredTransport: 'https://www.trip.com/t/oXRJ1rOMKX2',
@@ -15,6 +16,8 @@
     skiing: 'https://www.trip.com/t/wTUuFgKLKX2',
     lunarNewYear: 'https://www.trip.com/t/PWVS48LLKX2',
     tokyoOnsen: 'https://www.trip.com/t/AZYbjWLLKX2',
+    singaporeStay: 'https://www.trip.com/t/iZepd41x5X2',
+    hongKongPackage: 'https://www.trip.com/t/hgnHRlRmFX2',
     threads: 'https://www.threads.com/@xiaoyang.travel',
     instagram: 'https://www.instagram.com/xiaoyang.travel/',
     facebook: 'https://www.facebook.com/profile.php?id=61596301937461'
@@ -23,7 +26,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#10251f">
-<meta name="description" content="小楊的旅遊選物，日本路線、冬季企劃與東京高級溫泉飯店。">
+<meta name="description" content="小楊整理的旅行入口，依目的地探索住宿、交通票券和機加酒。">
 <title>小楊的旅遊選物</title>
 <style>
 :root {
@@ -73,6 +76,14 @@ h1 span { display: block; }
 .tools h2 { margin: 0; font-size: 1.05rem; }
 .tools .links { display: flex; flex-wrap: wrap; gap: .6rem; }
 .tools a { display: inline-flex; min-height: 44px; align-items: center; justify-content: center; border: 1px solid #526858; padding: .25rem 1.05rem; border-radius: 2rem; font-size: .9rem; }
+.destinations { display: grid; grid-template-columns: repeat(auto-fit,minmax(min(100%,13rem),1fr)); gap: .65rem; }
+.destinations a {
+  display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: .25rem .85rem;
+  padding: 1rem; border: 1px solid var(--rule); border-radius: .45rem; background: var(--panel);
+}
+.destinations a:hover { border-color: var(--brass); }
+.destinations span { font: 600 1.4rem/1.4 var(--serif); }
+.destinations small { font-size: .85rem; color: var(--sage); }
 .routes { display: grid; gap: 1.2rem; }
 .city { overflow: hidden; background: var(--panel); border-radius: .45rem; }
 .city h3 {
@@ -131,7 +142,7 @@ a[data-link]:active { box-shadow: inset 0 0 0 2px currentColor; }
       <img class="avatar" src="data:image/jpeg;base64,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" alt="小楊 Travel 品牌標誌" width="41" height="41">
       <span class="handle">xiaoyang.travel</span>
     </div>
-    <nav aria-label="站內導覽"><a href="#routes">日本路線</a><a href="#winter">冬季企劃</a></nav>
+    <nav aria-label="站內導覽"><a href="#destinations">目的地</a><a href="#winter">冬季企劃</a></nav>
   </header>
   <div class="hero">
     <div class="cover">
@@ -140,6 +151,15 @@ a[data-link]:active { box-shadow: inset 0 0 0 2px currentColor; }
       <a class="lead" href="#" data-link="featured">最新貼文主打推薦</a>
     </div>
   </div>
+
+  <section aria-labelledby="destinations">
+    <h2 id="destinations">依目的地探索</h2>
+    <div class="destinations">
+      <a href="#routes"><span>日本</span><small>城市住宿、交通與門票</small></a>
+      <a href="#" data-link="singaporeStay"><span>新加坡</span><small>麗思卡爾頓美年飯店</small></a>
+      <a href="#" data-link="hongKongPackage" data-until="2026-12-03T00:00:00+08:00"><span>香港</span><small>國泰航空機加酒</small></a>
+    </div>
+  </section>
 
   <!-- 第二順位：主打城市的交通票券與網卡。換主打城市時要改三個地方：
        1) 下面 h2 和兩個按鈕文字裡的城市名「東京」
@@ -180,7 +200,7 @@ a[data-link]:active { box-shadow: inset 0 0 0 2px currentColor; }
   </section>
 
   <section aria-labelledby="winter">
-    <h2 id="winter">冬季企劃</h2>
+    <h2 id="winter">日本冬季企劃</h2>
     <div class="winter">
       <a href="#" data-link="christmas">聖誕節</a>
       <a href="#" data-link="newYear">跨年</a>
@@ -205,6 +225,9 @@ a[data-link]:active { box-shadow: inset 0 0 0 2px currentColor; }
   </section>
 </main>
 <script>
+  for (const offer of document.querySelectorAll('[data-until]')) {
+    if (Date.now() >= Date.parse(offer.dataset.until)) offer.remove();
+  }
   for (const anchor of document.querySelectorAll('[data-link]')) {
     const [category, item] = anchor.dataset.link.split('.');
     anchor.href = item ? LINKS[category][item] : LINKS[category];
