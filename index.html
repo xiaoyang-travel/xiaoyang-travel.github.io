@@ -71,25 +71,48 @@ a:focus-visible,summary:focus-visible { outline: 3px solid var(--gold); outline-
 .brand span { font: .95rem Georgia,serif; letter-spacing: .03em; }
 h1 { font: 600 clamp(1.85rem,6vw,3rem)/1.24 var(--serif); letter-spacing: .055em; }
 .cover p { margin-top: .45rem; font-size: .9rem; color: #f2e9d9; }
-nav { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); }
-nav a { min-height: 48px; display: grid; place-items: center; text-align: center; color: var(--quiet); }
+nav { display: grid; }
+nav a { display: grid; text-align: center; }
 .brands {
-  gap: .25rem; margin-top: 1.2rem; padding: .3rem;
-  border: 1px solid #75634a; border-radius: var(--radius);
-  background: #13231d;
+  grid-template-columns: repeat(3,minmax(0,1fr)); gap: clamp(.35rem,1.6vw,.7rem);
+  margin-top: 1rem;
 }
-.brands a {
-  border: 1px solid transparent; border-radius: .3rem;
-  font: 600 clamp(1rem,4vw,1.2rem)/1.2 Georgia,serif; letter-spacing: .045em;
+.platform {
+  min-height: 4.6rem; padding: .5rem .15rem;
+  place-content: center; gap: .23rem;
+  border: 1px solid #8a795877; border-radius: .55rem;
+  background: linear-gradient(0deg,#14241df2,#15251f99),
+    var(--platform-scene) center / cover no-repeat #213329;
+  box-shadow: inset 0 1px #e5c99a23;
+  transition: border-color .18s ease, box-shadow .18s ease, transform .16s ease;
 }
-.brands a[aria-current="location"] {
-  color: #17251d; border-color: #e4c696;
-  background: linear-gradient(135deg,#f1ddba,#c4a06a);
+.platform strong {
+  color: var(--ivory); font: 600 clamp(1rem,4.4vw,1.3rem)/1.2 Georgia,serif;
+  letter-spacing: .025em;
 }
-.shortcuts { border-bottom: 1px solid var(--edge); margin-top: .2rem; }
-.shortcuts a { font-size: clamp(.8rem,3.3vw,.94rem); }
-.shortcuts a[aria-current="location"] { color: var(--gold); box-shadow: inset 0 -2px var(--gold); }
-.panel { scroll-margin-top: 4rem; padding-top: 1.65rem; }
+.platform small { color: #e1d7c0; font-size: clamp(.66rem,2.8vw,.78rem); }
+.platform[href="#destinations"] { --platform-scene: var(--onsen); }
+.platform[href="#klook"] { --platform-scene: var(--singapore); }
+.platform[href="#kkday"] { --platform-scene: var(--shirakawa); }
+.platform[aria-current="location"] {
+  border-color: #dfbc82;
+  background-image: linear-gradient(0deg,#231f17ef,#54432984),var(--platform-scene);
+  box-shadow: inset 0 0 0 2px #b9935a38, 0 3px 14px #050e0a54;
+}
+.platform[aria-current="location"] small { color: #f5d9a6; }
+.shortcuts {
+  grid-template-columns: repeat(4,minmax(0,1fr)); gap: clamp(.25rem,1.5vw,.65rem);
+  padding: .68rem 0; margin-top: .35rem; border-bottom: 1px solid var(--edge);
+}
+.shortcuts a {
+  min-height: 44px; place-items: center; border: 1px solid transparent; border-radius: .32rem;
+  color: var(--quiet); font-size: clamp(.74rem,3.18vw,.91rem);
+}
+.shortcuts a[aria-current="location"] { color: #f3d29a; background: #bc98641b; border-color: #ba965a70; }
+.panel { scroll-margin-top: 4rem; padding-top: 1.4rem; }
+.panel-intro { color: #d4d8cb; font-size: .88rem; line-height: 1.55; margin: -.47rem 0 1rem; }
+.panel[data-entering] { animation: panel-in .24s ease-out both; }
+@keyframes panel-in { from { opacity: .45; transform: translateY(5px); } to { opacity: 1; transform: none; } }
 h2 { margin-bottom: .9rem; font: 600 clamp(1.35rem,4.6vw,1.75rem)/1.4 var(--serif); letter-spacing: .095em; }
 .stack { display: grid; gap: var(--gap); }
 /* The same full-bleed frame is used by offers, itineraries and city links. */
@@ -100,6 +123,8 @@ h2 { margin-bottom: .9rem; font: 600 clamp(1.35rem,4.6vw,1.75rem)/1.4 var(--seri
   border: 1px solid var(--edge); border-radius: var(--radius);
   background: linear-gradient(90deg,#0c1816f5 0%,#0c1816e0 39%,#0c18165c 100%),
     var(--scene,var(--kyoto)) var(--crop,center) / cover no-repeat var(--surface);
+  box-shadow: inset 0 1px #f5dbab21;
+  transition: border-color .18s ease, box-shadow .18s ease, transform .16s ease;
 }
 .copy { min-width: 0; text-shadow: 0 1px 4px #000; }
 .copy strong,.copy small { display: block; }
@@ -109,19 +134,29 @@ h2 { margin-bottom: .9rem; font: 600 clamp(1.35rem,4.6vw,1.75rem)/1.4 var(--seri
 details { margin: 0; min-width: 0; }
 summary { list-style: none; cursor: pointer; }
 summary::-webkit-details-marker { display: none; }
-.toggle { color: #fff3d5; font-size: .74rem; text-shadow: 0 1px 4px #000; white-space: nowrap; }
+.toggle,.entry-action {
+  display: grid; place-items: center; min-width: 2.6rem;
+  border: 1px solid #c7a97880; border-radius: 2rem; padding: .25rem .43rem;
+  color: #fff0d0; background: #13211ce8; font-size: .72rem; line-height: 1.4; white-space: nowrap;
+}
+details[open] > summary .toggle { color: #233029; background: #e5c697; border-color: #e5c697; }
 .toggle::after { content: "展開"; }
 .itinerary .toggle::after { content: "看行程"; }
 details[open] > summary .toggle::after { content: "收合"; }
 details[open] > summary { border-color: var(--gold); }
 details .stack { margin-top: var(--gap); }
 @media (hover:hover) {
-  .entry:hover { border-color: var(--gold); }
-  .shortcuts a:hover { color: var(--ivory); }
+  .platform:hover,.entry:hover { border-color: var(--gold); }
+  .shortcuts a:hover { color: var(--ivory); background: #ffffff09; }
+  .entry:hover .entry-action,.entry:hover .toggle { border-color: var(--ivory); }
 }
-.entry:active { box-shadow: inset 0 0 0 1px var(--gold); }
-.shortcuts { grid-template-columns: repeat(4,minmax(0,1fr)); }
-.shortcuts a:first-child { color: var(--gold); }
+.platform:active,.entry:active { transform: translateY(1px); box-shadow: inset 0 0 0 1px var(--gold); }
+.shortcuts a:active { background: #bc986430; }
+@media (prefers-reduced-motion: reduce) {
+  .platform,.entry { transition: none; }
+  .platform:active,.entry:active { transform: none; }
+  .panel[data-entering] { animation: none; }
+}
 
 .itinerary-content {
   margin-top: var(--gap); padding: 1rem clamp(.85rem,4vw,1.45rem);
@@ -174,9 +209,9 @@ details .stack { margin-top: var(--gap); }
     <div><h1>小楊的旅遊選物</h1><p>我自己訂房都用 Trip，整理給你</p></div>
   </header>
   <nav class="brands" aria-label="預訂平台">
-    <a href="#destinations">Trip.com</a>
-    <a href="#klook">Klook</a>
-    <a href="#kkday">KKday</a>
+    <a class="platform" href="#destinations"><strong>Trip.com</strong><small>住宿與交通</small></a>
+    <a class="platform" href="#klook"><strong>Klook</strong><small>票券與交通</small></a>
+    <a class="platform" href="#kkday"><strong>KKday</strong><small>一日遊與體驗</small></a>
   </nav>
   <nav class="shortcuts" aria-label="旅遊指南與社群">
     <a href="#itineraries">一日遊企劃</a>
@@ -201,7 +236,7 @@ details .stack { margin-top: var(--gap); }
           <p class="trip-note">這條路線可沿銀座線走。若全天只搭少數幾趟，先比較單程和通票；搭 JR 要另外買票。</p>
         </div>
         <a class="entry" href="#" data-link="travelpayouts.tokyoSubway" rel="sponsored">
-          <span class="copy"><strong>查看東京地鐵乘車券</strong><small>Klook｜東京 Metro 與都營地下鐵</small></span>
+          <span class="copy"><strong>查看東京地鐵乘車券</strong><small>Klook｜東京 Metro 與都營地下鐵</small></span><span class="entry-action" aria-hidden="true">查看</span>
         </a>
       </details>
       <details class="itinerary" style="--scene:var(--singapore)">
@@ -218,7 +253,7 @@ details .stack { margin-top: var(--gap); }
           <p class="trip-note">花穹、雲霧林和擎天樹觀景台有不同票種。按當天打算去的展館選，並核對最後入場時間。</p>
         </div>
         <a class="entry" href="#" data-link="travelpayouts.singaporeGardens" rel="sponsored">
-          <span class="copy"><strong>查看濱海灣花園門票</strong><small>Klook｜依日期查看展館和票種</small></span>
+          <span class="copy"><strong>查看濱海灣花園門票</strong><small>Klook｜依日期查看展館和票種</small></span><span class="entry-action" aria-hidden="true">查看</span>
         </a>
       </details>
       <details class="itinerary" style="--scene:var(--shirakawa)">
@@ -235,83 +270,86 @@ details .stack { margin-top: var(--gap); }
           <p class="trip-note">餐食自理。商品頁列有大雪時的替代行程，景點順序依當天安排。</p>
         </div>
         <a class="entry" href="#" data-link="travelpayouts.shirakawago" rel="sponsored">
-          <span class="copy"><strong>查看白川鄉與飛驒高山一日團</strong><small>KKday｜核對出發日期與集合點</small></span>
+          <span class="copy"><strong>查看白川鄉與飛驒高山一日團</strong><small>KKday｜核對出發日期與集合點</small></span><span class="entry-action" aria-hidden="true">查看</span>
         </a>
       </details>
     </div>
   </section>
   <section id="destinations" class="panel" aria-labelledby="title-destinations">
     <h2 id="title-destinations">本期旅行選物</h2>
+    <p class="panel-intro">選好城市後，查入住日期、房型和交通。</p>
     <div class="stack">
-      <a class="entry featured" href="#" data-link="featured"><span class="copy"><strong>東京住宿精選</strong><small>最新貼文主打推薦</small></span></a>
-      <a class="entry" href="#" data-link="singaporeStay"><span class="copy"><strong>新加坡住宿</strong><small>麗思卡爾頓美年飯店</small></span></a>
-      <a class="entry" href="#" data-link="hongKongPackage" data-until="2026-12-03T00:00:00+08:00"><span class="copy"><strong>香港機加酒</strong><small>國泰航空・航班與飯店組合</small></span></a>
-      <a class="entry" href="#routes"><span class="copy"><strong>日本城市指南</strong><small>依城市找飯店、交通與門票</small></span></a>
+      <a class="entry featured" href="#" data-link="featured"><span class="copy"><strong>東京住宿精選</strong><small>最新貼文主打推薦</small></span><span class="entry-action" aria-hidden="true">查看</span></a>
+      <a class="entry" href="#" data-link="singaporeStay"><span class="copy"><strong>新加坡住宿</strong><small>麗思卡爾頓美年飯店</small></span><span class="entry-action" aria-hidden="true">查看</span></a>
+      <a class="entry" href="#" data-link="hongKongPackage" data-until="2026-12-03T00:00:00+08:00"><span class="copy"><strong>香港機加酒</strong><small>國泰航空・航班與飯店組合</small></span><span class="entry-action" aria-hidden="true">查看</span></a>
+      <a class="entry" href="#routes"><span class="copy"><strong>日本城市指南</strong><small>依城市找飯店、交通與門票</small></span><span class="entry-action" aria-hidden="true">查看</span></a>
     </div>
   </section>
   <section id="routes" class="panel" aria-labelledby="title-routes">
     <h2 id="title-routes">日本城市路線</h2>
     <div class="stack">
       <details><summary class="entry" style="--scene:var(--tokyo)"><span class="copy"><strong>東京</strong><small lang="en">Tokyo</small></span><span class="toggle" aria-hidden="true"></span></summary><div class="stack">
-        <a class="entry" href="#" data-link="featuredTransport"><span class="copy"><strong>東京交通票券</strong><small>查交通與乘車方案</small></span></a>
-        <a class="entry" href="#" data-link="featuredSim"><span class="copy"><strong>東京網卡</strong><small>查旅遊 eSIM</small></span></a>
-        <a class="entry" href="#" data-link="tokyoOnsen" style="--scene:var(--onsen)"><span class="copy"><strong>東京高級溫泉飯店</strong><small>查住宿與房型</small></span></a>
+        <a class="entry" href="#" data-link="featuredTransport"><span class="copy"><strong>東京交通票券</strong><small>查交通與乘車方案</small></span><span class="entry-action" aria-hidden="true">查看</span></a>
+        <a class="entry" href="#" data-link="featuredSim"><span class="copy"><strong>東京網卡</strong><small>查旅遊 eSIM</small></span><span class="entry-action" aria-hidden="true">查看</span></a>
+        <a class="entry" href="#" data-link="tokyoOnsen" style="--scene:var(--onsen)"><span class="copy"><strong>東京高級溫泉飯店</strong><small>查住宿與房型</small></span><span class="entry-action" aria-hidden="true">查看</span></a>
       </div></details>
       <details><summary class="entry" style="--scene:var(--nagoya)"><span class="copy"><strong>名古屋</strong><small lang="en">Nagoya</small></span><span class="toggle" aria-hidden="true"></span></summary><div class="stack">
-        <a class="entry" href="#" data-link="nagoya.hotel"><span class="copy"><strong>名古屋飯店</strong><small>查住宿與房型</small></span></a>
-        <a class="entry" href="#" data-link="nagoya.transport"><span class="copy"><strong>名古屋交通</strong><small>查當地交通票券</small></span></a>
-        <a class="entry" href="#" data-link="nagoya.tickets"><span class="copy"><strong>名古屋門票</strong><small>查景點與體驗</small></span></a>
+        <a class="entry" href="#" data-link="nagoya.hotel"><span class="copy"><strong>名古屋飯店</strong><small>查住宿與房型</small></span><span class="entry-action" aria-hidden="true">查看</span></a>
+        <a class="entry" href="#" data-link="nagoya.transport"><span class="copy"><strong>名古屋交通</strong><small>查當地交通票券</small></span><span class="entry-action" aria-hidden="true">查看</span></a>
+        <a class="entry" href="#" data-link="nagoya.tickets"><span class="copy"><strong>名古屋門票</strong><small>查景點與體驗</small></span><span class="entry-action" aria-hidden="true">查看</span></a>
       </div></details>
       <details><summary class="entry" style="--scene:var(--takayama)"><span class="copy"><strong>高山</strong><small lang="en">Takayama</small></span><span class="toggle" aria-hidden="true"></span></summary><div class="stack">
-        <a class="entry" href="#" data-link="takayama.hotel"><span class="copy"><strong>高山飯店</strong><small>查住宿與房型</small></span></a>
-        <a class="entry" href="#" data-link="takayama.transport"><span class="copy"><strong>高山交通</strong><small>查當地交通票券</small></span></a>
-        <a class="entry" href="#" data-link="takayama.tickets"><span class="copy"><strong>高山門票</strong><small>查景點與體驗</small></span></a>
+        <a class="entry" href="#" data-link="takayama.hotel"><span class="copy"><strong>高山飯店</strong><small>查住宿與房型</small></span><span class="entry-action" aria-hidden="true">查看</span></a>
+        <a class="entry" href="#" data-link="takayama.transport"><span class="copy"><strong>高山交通</strong><small>查當地交通票券</small></span><span class="entry-action" aria-hidden="true">查看</span></a>
+        <a class="entry" href="#" data-link="takayama.tickets"><span class="copy"><strong>高山門票</strong><small>查景點與體驗</small></span><span class="entry-action" aria-hidden="true">查看</span></a>
       </div></details>
       <details><summary class="entry" style="--scene:var(--kyoto)"><span class="copy"><strong>京都</strong><small lang="en">Kyoto</small></span><span class="toggle" aria-hidden="true"></span></summary><div class="stack">
-        <a class="entry" href="#" data-link="kyoto.hotel"><span class="copy"><strong>京都飯店</strong><small>查住宿與房型</small></span></a>
-        <a class="entry" href="#" data-link="kyoto.transport"><span class="copy"><strong>京都交通</strong><small>查當地交通票券</small></span></a>
-        <a class="entry" href="#" data-link="kyoto.tickets"><span class="copy"><strong>京都門票</strong><small>查景點與體驗</small></span></a>
+        <a class="entry" href="#" data-link="kyoto.hotel"><span class="copy"><strong>京都飯店</strong><small>查住宿與房型</small></span><span class="entry-action" aria-hidden="true">查看</span></a>
+        <a class="entry" href="#" data-link="kyoto.transport"><span class="copy"><strong>京都交通</strong><small>查當地交通票券</small></span><span class="entry-action" aria-hidden="true">查看</span></a>
+        <a class="entry" href="#" data-link="kyoto.tickets"><span class="copy"><strong>京都門票</strong><small>查景點與體驗</small></span><span class="entry-action" aria-hidden="true">查看</span></a>
       </div></details>
       <details><summary class="entry" style="--scene:var(--osaka)"><span class="copy"><strong>大阪</strong><small lang="en">Osaka</small></span><span class="toggle" aria-hidden="true"></span></summary><div class="stack">
-        <a class="entry" href="#" data-link="osaka.hotel"><span class="copy"><strong>大阪飯店</strong><small>查住宿與房型</small></span></a>
-        <a class="entry" href="#" data-link="osaka.transport"><span class="copy"><strong>大阪交通</strong><small>查當地交通票券</small></span></a>
-        <a class="entry" href="#" data-link="osaka.tickets"><span class="copy"><strong>大阪門票</strong><small>查景點與體驗</small></span></a>
+        <a class="entry" href="#" data-link="osaka.hotel"><span class="copy"><strong>大阪飯店</strong><small>查住宿與房型</small></span><span class="entry-action" aria-hidden="true">查看</span></a>
+        <a class="entry" href="#" data-link="osaka.transport"><span class="copy"><strong>大阪交通</strong><small>查當地交通票券</small></span><span class="entry-action" aria-hidden="true">查看</span></a>
+        <a class="entry" href="#" data-link="osaka.tickets"><span class="copy"><strong>大阪門票</strong><small>查景點與體驗</small></span><span class="entry-action" aria-hidden="true">查看</span></a>
       </div></details>
     </div>
   </section>
   <section id="winter" class="panel" aria-labelledby="title-winter">
     <h2 id="title-winter">日本冬季企劃</h2>
     <div class="stack">
-      <a class="entry" href="#" data-link="christmas"><span class="copy"><strong>東京聖誕節</strong><small>聖誕市集與夜間點燈</small></span></a>
-      <a class="entry" href="#" data-link="newYear"><span class="copy"><strong>日本跨年</strong><small>跨年景點與新年習俗</small></span></a>
-      <a class="entry" href="#" data-link="skiing"><span class="copy"><strong>日本滑雪</strong><small>雪場與冬季旅行規劃</small></span></a>
-      <a class="entry" href="#" data-link="lunarNewYear"><span class="copy"><strong>日本過年</strong><small>農曆新年出遊指南</small></span></a>
+      <a class="entry" href="#" data-link="christmas"><span class="copy"><strong>東京聖誕節</strong><small>聖誕市集與夜間點燈</small></span><span class="entry-action" aria-hidden="true">查看</span></a>
+      <a class="entry" href="#" data-link="newYear"><span class="copy"><strong>日本跨年</strong><small>跨年景點與新年習俗</small></span><span class="entry-action" aria-hidden="true">查看</span></a>
+      <a class="entry" href="#" data-link="skiing"><span class="copy"><strong>日本滑雪</strong><small>雪場與冬季旅行規劃</small></span><span class="entry-action" aria-hidden="true">查看</span></a>
+      <a class="entry" href="#" data-link="lunarNewYear"><span class="copy"><strong>日本過年</strong><small>農曆新年出遊指南</small></span><span class="entry-action" aria-hidden="true">查看</span></a>
     </div>
   </section>
   <section id="klook" class="panel partner-panel" aria-labelledby="title-klook">
     <h2 id="title-klook">Klook 票券選物</h2>
+    <p class="panel-intro">自由行先看交通和景點門票，再選適合的日期與票種。</p>
     <div class="stack">
-      <a class="entry" href="#" data-link="travelpayouts.tokyoSubway" rel="sponsored"><span class="copy"><strong>東京地鐵乘車券</strong><small>東京 Metro 與都營地下鐵</small></span></a>
-      <a class="entry" href="#" data-link="travelpayouts.singaporeGardens" rel="sponsored"><span class="copy"><strong>濱海灣花園門票</strong><small>依日期查看展館與票種</small></span></a>
-      <a class="entry" href="#" data-link="travelpayouts.klookDeals" rel="sponsored"><span class="copy"><strong>Klook 台灣優惠專區</strong><small>瀏覽平台活動與可用優惠</small></span></a>
+      <a class="entry" href="#" data-link="travelpayouts.tokyoSubway" rel="sponsored"><span class="copy"><strong>東京地鐵乘車券</strong><small>東京 Metro 與都營地下鐵</small></span><span class="entry-action" aria-hidden="true">查看</span></a>
+      <a class="entry" href="#" data-link="travelpayouts.singaporeGardens" rel="sponsored"><span class="copy"><strong>濱海灣花園門票</strong><small>依日期查看展館與票種</small></span><span class="entry-action" aria-hidden="true">查看</span></a>
+      <a class="entry" href="#" data-link="travelpayouts.klookDeals" rel="sponsored"><span class="copy"><strong>Klook 台灣優惠專區</strong><small>瀏覽平台活動與可用優惠</small></span><span class="entry-action" aria-hidden="true">查看</span></a>
     </div>
   </section>
 
   <section id="kkday" class="panel partner-panel" aria-labelledby="title-kkday">
     <h2 id="title-kkday">KKday 行程選物</h2>
+    <p class="panel-intro">想省下轉車功課，可以從有集合點的一日團開始挑。</p>
     <div class="stack">
-      <a class="entry" href="#" data-link="travelpayouts.shirakawago" rel="sponsored"><span class="copy"><strong>白川鄉與飛驒高山一日遊</strong><small>名古屋出發，查看行程與集合點</small></span></a>
-      <a class="entry" href="#" data-link="travelpayouts.seoulArex" rel="sponsored"><span class="copy"><strong>仁川機場 AREX 直達車</strong><small>來往仁川機場與首爾站</small></span></a>
-      <a class="entry" href="#" data-link="travelpayouts.kkdayHome" rel="sponsored"><span class="copy"><strong>KKday 景點與體驗</strong><small>依目的地找門票與行程</small></span></a>
+      <a class="entry" href="#" data-link="travelpayouts.shirakawago" rel="sponsored"><span class="copy"><strong>白川鄉與飛驒高山一日遊</strong><small>名古屋出發，查看行程與集合點</small></span><span class="entry-action" aria-hidden="true">查看</span></a>
+      <a class="entry" href="#" data-link="travelpayouts.seoulArex" rel="sponsored"><span class="copy"><strong>仁川機場 AREX 直達車</strong><small>來往仁川機場與首爾站</small></span><span class="entry-action" aria-hidden="true">查看</span></a>
+      <a class="entry" href="#" data-link="travelpayouts.kkdayHome" rel="sponsored"><span class="copy"><strong>KKday 景點與體驗</strong><small>依目的地找門票與行程</small></span><span class="entry-action" aria-hidden="true">查看</span></a>
     </div>
   </section>
 
   <section id="social" class="panel" aria-labelledby="title-social">
     <h2 id="title-social">追蹤小楊</h2>
     <div class="stack">
-      <a class="entry" href="#" data-link="threads"><span class="copy"><strong>Threads</strong><small>@xiaoyang.travel</small></span></a>
-      <a class="entry" href="#" data-link="instagram"><span class="copy"><strong>Instagram</strong><small>@xiaoyang.travel</small></span></a>
-      <a class="entry" href="#" data-link="facebook"><span class="copy"><strong>Facebook</strong><small>小楊的旅遊選物</small></span></a>
+      <a class="entry" href="#" data-link="threads"><span class="copy"><strong>Threads</strong><small>@xiaoyang.travel</small></span><span class="entry-action" aria-hidden="true">查看</span></a>
+      <a class="entry" href="#" data-link="instagram"><span class="copy"><strong>Instagram</strong><small>@xiaoyang.travel</small></span><span class="entry-action" aria-hidden="true">查看</span></a>
+      <a class="entry" href="#" data-link="facebook"><span class="copy"><strong>Facebook</strong><small>小楊的旅遊選物</small></span><span class="entry-action" aria-hidden="true">查看</span></a>
     </div>
   </section>
 </main>
@@ -326,26 +364,41 @@ details .stack { margin-top: var(--gap); }
 
   const panels = [...document.querySelectorAll('.panel')];
   const tabs = [...document.querySelectorAll('nav a')];
-  function selectCategory() {
+  const navigation = document.querySelector('.brands');
+  function selectCategory(animate = false) {
     const previous = panels.find(panel => !panel.hidden);
+    const focusWasInPanel = previous?.contains(document.activeElement);
     const legacySections = {'#featured-transport': '#routes', '#world': '#klook'};
     const target = legacySections[location.hash] || location.hash;
     const active = panels.find(panel => '#' + panel.id === target) || panels[0];
     if (location.hash === '#featured-transport') active.querySelector('details').open = true;
-    for (const panel of panels) panel.hidden = panel !== active;
+    for (const panel of panels) {
+      panel.hidden = panel !== active;
+      panel.toggleAttribute('data-entering', animate && panel === active && panel !== previous);
+    }
     for (const tab of tabs) {
       const current = tab.hash === '#' + active.id;
       if (current) tab.setAttribute('aria-current', 'location');
       else tab.removeAttribute('aria-current');
     }
-    if (previous?.contains(document.activeElement) && previous !== active) {
+    if (focusWasInPanel && previous !== active) {
       tabs.find(tab => tab.hash === '#' + active.id)?.focus({preventScroll:true});
     }
     // Keep the platform and section links in view when switching panels.
-    if (location.hash && document.querySelector('nav').getBoundingClientRect().top < 0)
-      document.querySelector('nav').scrollIntoView({block:'start'});
+    if (location.hash && navigation.getBoundingClientRect().top < 0)
+      navigation.scrollIntoView({block:'start'});
   }
-  addEventListener('hashchange', selectCategory);
+  for (const link of document.querySelectorAll('a[href^="#"]:not([data-link])')) {
+    link.addEventListener('click', event => {
+      if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      event.preventDefault();
+      if (link.hash !== location.hash) {
+        history.pushState(null, '', link.hash);
+        selectCategory(true);
+      }
+    });
+  }
+  addEventListener('hashchange', () => selectCategory(true));
   selectCategory();
 </script>
 </body>
