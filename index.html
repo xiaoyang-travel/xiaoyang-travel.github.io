@@ -4,6 +4,7 @@
 <script>
   // 新增 Trip 短鏈前比對官方跳轉的目的地、本人 Allianceid／SID 和預期 trip_sub1。
   const LINKS = {
+    japanEsim: 'https://tw.trip.com/things-to-do/detail/45999298/?Allianceid=11074281&SID=333979549&trip_sub1=threads_x03_japan_esim&trip_sub3=D21579497',
     quickFlights: 'https://www.trip.com/t/s3BnPQgqKX2',
     quickHotels: 'https://www.trip.com/t/gUG3BzhqKX2',
     quickTickets: 'https://www.trip.com/t/s5GPyQlqKX2',
@@ -128,6 +129,7 @@ nav a { display: grid; text-align: center; }
 }
 .shortcuts a[aria-current="location"] { color: #f3d29a; background: #bc98641b; border-color: #ba965a70; }
 .panel { scroll-margin-top: 4rem; padding-top: 1.4rem; }
+.trip-prep { margin-top: var(--gap); }
 .quick-search { padding-top: 1.2rem; }
 .quick-search h2 { margin-bottom: .25rem; font-size: clamp(1.3rem,4.8vw,1.65rem); }
 .quick-search p { margin-bottom: .8rem; color: var(--quiet); font-size: .82rem; }
@@ -280,6 +282,10 @@ details .stack { margin-top: var(--gap); }
       <a class="quick-link" href="#route-kyoto" style="--quick-scene:var(--kyoto)"><strong>京都</strong><small>住宿、交通與景點</small></a>
       <a class="quick-link" href="#route-osaka" style="--quick-scene:var(--osaka)"><strong>大阪</strong><small>住宿與景點門票</small></a>
     </div>
+    <a class="entry trip-prep" href="#" data-link="japanEsim" rel="sponsored" style="--scene:var(--tokyo)">
+      <span class="copy"><strong>日本旅遊上網</strong><small>Trip.com｜查看 eSIM 方案與手機相容性</small></span>
+      <span class="entry-action" aria-hidden="true">查看</span>
+    </a>
   </section>
   <section class="quick-search" aria-labelledby="title-quick-search">
     <h2 id="title-quick-search">直接查旅遊</h2>
