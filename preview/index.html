@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#10251f">
+<meta name="description" content="小楊整理的旅行入口，從一日遊開始規劃，找對應的車票、景點門票與住宿。">
+<title>小楊的旅遊選物｜一日遊攻略、機票住宿與景點門票</title>
+<link rel="canonical" href="https://xiaoyang-travel.github.io/">
+<meta name="robots" content="noindex,follow">
+<meta property="og:site_name" content="小楊的旅遊選物">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:title" content="小楊的旅遊選物">
+<meta property="og:description" content="繁中一日遊行程與旅遊選物，查詢機票、住宿、景點門票和跟團行程。">
+<meta property="og:url" content="https://xiaoyang-travel.github.io/">
+<meta property="og:type" content="website">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "小楊的旅遊選物", "url": "https://xiaoyang-travel.github.io/", "inLanguage": "zh-Hant"}</script>
+
+<link rel="stylesheet" href="./site.css">
+<script>
+  const fragment = location.hash.slice(1);
+  const oldPages = {
+    search: 'search', itineraries: 'itineraries', routes: 'routes', destinations: 'destinations',
+    winter: 'winter', klook: 'klook', kkday: 'kkday', social: 'social',
+    world: 'klook', 'featured-transport': 'routes'
+  };
+  if (/^route-[a-z]+$/.test(fragment)) location.replace('routes/' + location.search + location.hash);
+  else if (Object.hasOwn(oldPages, fragment)) location.replace(oldPages[fragment] + '/' + location.search);
+</script>
+<script src="./links.js" defer></script>
+<script src="./site.js" defer></script>
+</head>
+<body class="selection"><main class="selection-page">
+<header class="signature"><img src="brand.jpg" width="46" height="46" alt=""><div><h1>小楊的旅遊選物</h1><p>我自己訂房都用 Trip，整理給你</p></div></header>
+<div class="booking-tabs" aria-label="選擇預訂平台" hidden><button type="button" id="tab-trip" aria-controls="offers-trip">Trip.com</button><button type="button" id="tab-klook" aria-controls="offers-klook">Klook</button><button type="button" id="tab-kkday" aria-controls="offers-kkday">KKday</button></div>
+<section class="offers" id="offers-trip" aria-label="Trip.com"><a class="feature-link" href="destinations/" style="--feature:var(--search-stays)"><span><small>Trip.com</small><strong>住宿與交通精選</strong></span></a><div class="services"><a class="service" href="https://www.trip.com/t/s3BnPQgqKX2" data-link="quickFlights" rel="sponsored"><span class="icon-box"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M2 13l8-3 6-7 3 1-5 8 3 7-2 1-5-6-6 2z"/></svg></span><span>機票</span></a>
+<a class="service" href="https://www.trip.com/t/gUG3BzhqKX2" data-link="quickHotels" rel="sponsored"><span class="icon-box"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M3 19V6m0 8h18v5m-16-9h4v4m2-6h7q3 0 3 4v2"/></svg></span><span>住宿</span></a>
+<a class="service" href="https://www.trip.com/t/s5GPyQlqKX2" data-link="quickTickets" rel="sponsored"><span class="icon-box"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M3 6h18v4a2 2 0 0 0 0 4v4H3v-4a2 2 0 0 0 0-4z M15 8v2m0 3v2"/></svg></span><span>景點門票</span></a>
+<a class="service" href="https://www.trip.com/t/1VyacimqKX2" data-link="quickPackages" rel="sponsored"><span class="icon-box"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M3 8h18v12H3z M9 8V4h6v4"/></svg></span><span>機加酒</span></a>
+<a class="service" href="https://tw.trip.com/things-to-do/detail/45999298/?Allianceid=11074281&amp;SID=333979549&amp;trip_sub1=threads_x03_japan_esim&amp;trip_sub3=D21579497" data-link="japanEsim" rel="sponsored"><span class="icon-box"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6z M9 11h6v6H9z"/></svg></span><span>日本 eSIM</span></a>
+<a class="service" href="routes/"><span class="icon-box"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M6 15V6q0-3 6-3t6 3v9q0 3-3 3H9q-3 0-3-3z M6 10h12M9 18l-3 3m9-3 3 3"/></svg></span><span>日本城市交通</span></a></div></section>
+<section class="offers" id="offers-klook" aria-label="Klook"><a class="feature-link" href="klook/" style="--feature:var(--singapore)"><span><small>Klook</small><strong>門票與體驗精選</strong></span></a><div class="services"><a class="service" href="https://klook.tpx.lu/u3kTwVy8" data-link="travelpayouts.tokyoSubway" rel="sponsored"><span class="icon-box"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M6 15V6q0-3 6-3t6 3v9q0 3-3 3H9q-3 0-3-3z M6 10h12M9 18l-3 3m9-3 3 3"/></svg></span><span>東京地鐵券</span></a>
+<a class="service" href="https://klook.tpx.lu/DHz2yPpY" data-link="travelpayouts.singaporeGardens" rel="sponsored"><span class="icon-box"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 19Q1 6 20 3q1 16-12 15 M4 21l11-12"/></svg></span><span>濱海灣花園</span></a>
+<a class="service" href="https://klook.tpx.lu/vAwUxlKs" data-link="travelpayouts.osakaStudio" rel="sponsored"><span class="icon-box"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M3 9h18v12H3z M3 9l-1-5 17-3 1 5z M8 4l3 3m3-5 3 3"/></svg></span><span>大阪環球影城</span></a>
+<a class="service" href="https://klook.tpx.lu/s3JadJXU" data-link="travelpayouts.hkDisney" rel="sponsored"><span class="icon-box"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M3 21V7l3-4 3 4v5h6V7l3-4 3 4v14z M10 21v-4q2-4 4 0v4"/></svg></span><span>香港迪士尼</span></a>
+<a class="service" href="https://klook.tpx.lu/vQhTFf2w" data-link="travelpayouts.klookDeals" rel="sponsored"><span class="icon-box"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M3 6h18v4a2 2 0 0 0 0 4v4H3v-4a2 2 0 0 0 0-4z M15 8v2m0 3v2"/></svg></span><span>台灣優惠專區</span></a></div></section>
+<section class="offers" id="offers-kkday" aria-label="KKday"><a class="feature-link" href="kkday/" style="--feature:var(--shirakawa)"><span><small>KKday</small><strong>一日遊與交通精選</strong></span></a><div class="services"><a class="service" href="https://kkday.tpx.lu/b1KSOcu2" data-link="travelpayouts.shirakawago" rel="sponsored"><span class="icon-box"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M3 6l6-3 6 3 6-3v15l-6 3-6-3-6 3z M9 3v15m6-12v15"/></svg></span><span>白川鄉與高山</span></a>
+<a class="service" href="https://kkday.tpx.lu/ZriZsk2V" data-link="travelpayouts.seoulArex" rel="sponsored"><span class="icon-box"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M6 15V6q0-3 6-3t6 3v9q0 3-3 3H9q-3 0-3-3z M6 10h12M9 18l-3 3m9-3 3 3"/></svg></span><span>仁川機場快線</span></a>
+<a class="service" href="https://kkday.tpx.lu/6jEbJoxk" data-link="travelpayouts.northCoast" rel="sponsored"><span class="icon-box"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M3 6l6-3 6 3 6-3v15l-6 3-6-3-6 3z M9 3v15m6-12v15"/></svg></span><span>北海岸一日遊</span></a>
+<a class="service" href="https://kkday.tpx.lu/EdTjnDxW" data-link="travelpayouts.ayutthaya" rel="sponsored"><span class="icon-box"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M3 6l6-3 6 3 6-3v15l-6 3-6-3-6 3z M9 3v15m6-12v15"/></svg></span><span>泰國大城一日遊</span></a>
+<a class="service" href="https://kkday.tpx.lu/JO8JWync" data-link="travelpayouts.kkdayHome" rel="sponsored"><span class="icon-box"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M3 6l6-3 6 3 6-3v15l-6 3-6-3-6 3z M9 3v15m6-12v15"/></svg></span><span>更多景點體驗</span></a></div></section>
+<section class="guide-shelf"><div class="section-heading"><h2>一日遊攻略</h2><a href="itineraries/">全部攻略</a></div><div class="guide-picks"><a class="guide-tile" href="guides/tokyo-subway-day-trip/" style="--scene:var(--tokyo)"><small>東京</small><strong>淺草到銀座</strong></a><a class="guide-tile" href="guides/singapore-gardens-by-the-bay/" style="--scene:var(--singapore)"><small>新加坡</small><strong>濱海灣花園</strong></a><a class="guide-tile" href="guides/nagoya-shirakawago-takayama/" style="--scene:var(--shirakawa)"><small>名古屋出發</small><strong>白川鄉與高山</strong></a><a class="guide-tile" href="guides/hong-kong-disneyland-day-trip/" style="--scene:var(--hongkong)"><small>香港</small><strong>迪士尼一日遊</strong></a></div></section><nav class="explore" aria-label="小楊旅遊指南"><a href="search/">旅遊查詢</a><a href="routes/">目的地</a><a href="winter/">冬季企劃</a><a href="social/">追蹤小楊</a></nav>
+</main></body></html>
