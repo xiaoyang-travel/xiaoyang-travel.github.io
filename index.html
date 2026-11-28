@@ -265,17 +265,109 @@ details .stack { margin-top: var(--gap); }
 .panel details[id^="route-"] { scroll-margin-top: 1rem; }
 .guide-links ul { display:flex; flex-wrap:wrap; gap:.4rem .7rem; padding:0; margin:0 0 .85rem; list-style:none; }
 .guide-links a { min-height:44px; align-items:center; text-align:left; color:var(--gold); font-size:.84rem; text-decoration:underline; text-underline-offset:.22em; }
+
+/* Editorial home layout */
+:root {
+  --page: #101914;
+  --surface: #192820;
+  --edge: #67634d;
+  --ivory: #fff5e3;
+  --quiet: #c0c9bc;
+  --gold: #e6c694;
+  --radius: .85rem;
+  --gap: .75rem;
+}
+html { scroll-padding-top: 1rem; }
+body { background: #101914; }
+main { width: min(calc(100% - 2rem), 68rem); padding: 1rem 0 4rem; }
+.cover {
+  min-height: clamp(22rem, 57vw, 34rem);
+  padding: clamp(1.3rem, 5vw, 3.75rem);
+  background: linear-gradient(0deg,#071610f7 0%,#0a171165 58%,#0a171130 100%),
+    var(--home-editorial) 60% 46% / cover no-repeat #203127;
+}
+.cover::after { display: none; }
+.brand { align-self: start; gap: .7rem; }
+.brand img { width: 2.7rem; height: 2.7rem; }
+.brand span { font-size: 1rem; letter-spacing: .09em; }
+.cover h1 { font-size: clamp(2.05rem, 6vw, 4.2rem); letter-spacing: .035em; text-wrap: balance; }
+.cover p { margin-top: .65rem; color: #eee3ce; font-size: clamp(.87rem, 2.3vw, 1.05rem); }
+.cover-actions { display: flex; flex-wrap: wrap; gap: .55rem; margin-top: 1.3rem; }
+.cover-actions a {
+  display: inline-grid; place-items: center; min-height: 44px; padding: .55rem .95rem;
+  border: 1px solid #d4bd8e; border-radius: .35rem; background: #14251de8; font-size: .87rem;
+}
+.cover-actions a:first-child { color: #19251d; background: #ead5ae; }
+.cover-actions a:hover { box-shadow: inset 0 0 0 1px #e6c694; }
+.quick-search, .panel { padding-top: clamp(1.75rem, 4.8vw, 3rem); }
+.quick-search h2, .panel h2 { font-size: clamp(1.5rem, 4vw, 2.25rem); margin-bottom: .65rem; letter-spacing: .055em; }
+.quick-search .quick-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+.quick-search .quick-link {
+  min-height: clamp(6rem, 16vw, 9rem); align-content: end;
+  padding: .75rem clamp(.7rem, 3vw, 1.2rem); border-color: #a38b6575;
+  background: linear-gradient(0deg,#0c1813f0 0%,#0c181394 43%,#0c181320 100%),
+    var(--quick-scene) var(--quick-crop,center) / cover no-repeat #24332a;
+  border-radius: .65rem;
+}
+.quick-search .quick-link strong { font-size: clamp(1.12rem, 4vw, 1.5rem); }
+.quick-search .quick-link small { font-size: clamp(.72rem, 2.6vw, .88rem); }
+#search { scroll-margin-top: 1rem; }
+#search a { min-height: clamp(5rem, 12vw, 7.5rem); }
+.trip-prep { min-block-size: 5.5rem; }
+.catalog-nav { border-top: 1px solid #a58b634f; margin-top: clamp(2rem,5vw,3.5rem); padding-top: .9rem; }
+.brands { margin-top: 0; gap: .55rem; }
+.platform { min-height: 3.9rem; background: #1a2821; border-color: #9b835a70; border-radius: .5rem; }
+.platform[aria-current="location"] { background: #e4cca5; border-color: #e4cca5; box-shadow: none; }
+.platform[aria-current="location"] strong, .platform[aria-current="location"] small { color: #19271e; }
+.shortcuts { margin-top: 0; gap: .1rem; padding: .5rem 0; }
+.shortcuts a { font-size: clamp(.72rem, 2.8vw, .93rem); }
+.panel { scroll-margin-top: 0; }
+.entry {
+  min-block-size: clamp(6.1rem, 15vw, 9.4rem); border-color: #a58b6369;
+  background: linear-gradient(90deg,#0b1713f2,#0b1713b3 42%,#0b171330 90%),
+    var(--scene,var(--kyoto)) var(--crop,center) / cover no-repeat var(--surface);
+  box-shadow: none;
+}
+.entry-action, .toggle { min-width: 3rem; min-height: 1.95rem; background: #101e17ed; border-radius: .35rem; }
+.guide-links ul { gap: .35rem .5rem; }
+.guide-links a { border: 1px solid #9b835a70; background: #1a2821; border-radius: .35rem; padding: .45rem .6rem; text-decoration: none; }
+.guide-links a:hover { border-color: var(--gold); }
+#social .entry { min-block-size: 5.5rem; }
+@media (min-width: 48rem) {
+  main { width: min(calc(100% - 4rem), 68rem); padding-top: 2rem; }
+  .cover { background-image: linear-gradient(90deg,#091610e8,#0a171150 52%,#0a17111a), linear-gradient(0deg,#0a1711a0,transparent 66%),var(--home-editorial); background-position: center; background-size: cover; }
+  .quick-search .quick-grid { grid-template-columns: repeat(4,minmax(0,1fr)); gap: .8rem; }
+  .catalog-nav { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 1rem; align-items: center; }
+  .shortcuts { border-bottom: 0; }
+  .panel > .stack { grid-template-columns: repeat(2,minmax(0,1fr)); align-items: start; }
+  #social > .stack { grid-template-columns: repeat(3,minmax(0,1fr)); }
+}
 </style>
 </head>
 <body>
 <main>
   <header class="cover">
     <div class="brand"><img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/7QCEUGhvdG9zaG9wIDMuMAA4QklNBAQAAAAAAGgcAigAYkZCTUQwYTAwMGFiZjAxMDAwMGI4MDMwMDAwMjYwNTAwMDA5ZDA1MDAwMGUxMDUwMDAwMGIwODAwMDA2MTBhMDAwMDliMGIwMDAwMzEwYzAwMDA4NDBjMDAwMDAzMGYwMDAwAP/bAIQABQYGCwgLCwsLCw0LCwsNDg4NDQ4ODw0ODg4NDxAQEBEREBAQEA8TEhMPEBETFBQTERMWFhYTFhUVFhkWGRYWEgEFBQUKBwoICQkICwgKCAsKCgkJCgoMCQoJCgkMDQsKCwsKCw0MCwsICwsMDAwNDQwMDQoLCg0MDQ0MExQTExOc/8IAEQgBQAFAAwEiAAIRAQMRAf/EAIoAAQABBQEBAAAAAAAAAAAAAAABAgQFBgcDCBAAAQMBAwULCAcJAQAAAAAAAQACAxEEEiEFEzEzQRAgIjJAUWFxcrHRFBUwUoGRosFCUGCCoeHwIzRDYnCAkJLC0hEBAAEDAgUEAQIHAQAAAAAAAREAITFBURBhcYHwQJGhsSAwwVBgcICQ0eHx/9oADAMBAAIAAwAAAAHn4WoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAuC3b/oESEwN7idEZLKmsN6J0VtGrqQkAAAAAAAAAAALws8h0Dn8Vdy+ffoLitNeHdc5HV55bsPP+t0evKtvorTlBFeL4n23iVfiFXmAAAAAAAAAAA3rRe+U14flecwh3HgXffn2Kvo/586jgk6f9FaDuEVYn01XbITF9jVVfDu18Jq8pFfkAAAAAAAAAABe9c4sipkdg6LE3nz73bhMTtGx80VU53pvFe1U1836TzTYpjcarnEUeuw/O3feB1eYV+QAAAAAAAAAAAIucpgibm2ABnMGLiPAXGXwAyGPAAAAAAAAAAAAAABFW0+fpqk9CsvL20qN1TGls5g/XwCukAAAAAAAAAAAAAABcW6GRosVNWQrxhOWxUJpCqAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP/aAAgBAQABBQL/ABbxsvunyPmmbyw5MbaI7VDmZLNk2SdvmSVeZJVacmyQN5ZZtZb9RuwWSSZZNhdFFbrBM+XI+ofHOSyOcHLGo5VBHnH23JUbG2bWW/UWOFs0mUbCxsCydb2WZsMudbacqMjOR9Q+yXiyyXTljUcqyNDekyzLdis2st+oa4tMbxMyeLNPs8Jme0UFvsItAGT4F5vhXkEC83wFTCj+U5Ps2YiyraM7LZtZb9QsizXmZbho/IsLQyCcTCW0vztksbLK2WzxzoZOs5TsnQU5TBLmnz5UZmVZtZb9SslzZubK9sjeILY6FmRtRlH94ZZpLQLRLfNrlbZIDwYeV5Ls8c7o8mQxuypIGQbzI+oyjr8mvkmH7KxMfYxbDlGS5ByuOV0Z84TqSV0m9ht0sLZJDI6OQxmSR0hiyhNE2a0yTfa9837J7ArPZ6xxxh6a4ZubVfURkJb5S+pndXyh9GWp7A21vaP7yf/aAAgBAwABPwH+lBFNwCqorh5kRT0xbSik0hObRRgIUqv1pUun0sYqU41Kl2J+IBUYp7UMdiopNnpQ6iayuKl0q9hRRnFNOJXepdnpq72vII2Xq40ovJTWldn696Fm6en9e9PZdPIarOO9Y+9Zx3rFFxOk1+1v/9oACAECAAE/Af6UV3lfT1TUDVOR3G+lchoTUE7db6WiJTVROR3G/Ub3UphWq8pFK0Wf6E117kNFcHMrg5kGgaBT7W//2gAIAQEABj8C/wAW7W+sQPenPzlborS7+e9vl5GJGzYnMrW6VfaW06ehaWe8+C0s958FfcW06Onlsfbb3qXsneEsbWnSFdeKG8VI8M4OmtRzIdpyN2VoGwXK/NC9K0jaLlPmj2m8ra31iAnPYS26K00jxUfbb3qXslNY40BXAbTN4+zbuODg41NcKJrwCA7HFPjLXVGGzaOtDtOROelFdgdh3IHPSmmwuw7ke03lZfsYPxKu+ufwCj7be9S9koEaRigdj296cz1TRNYNvdtQA0BczxoPyK4vxO8Vxfid4ri/G7/0uL8TvFOA0Bx7+VAHjHF3WjTQzg+Kj7be9S9k7jmeoajqP5pr/WFD1j8kZPpE06gESNAcR7lNZ2/xHcEn6NRiun6Tj+tCF4XqaMfBYMHvPiibmznPjypr6XrprRX2HhHADaD09W5H2296l7J3G8zuCfb+azbeEQa12BSMH09vNz/gvvOUna8E0zuF3DgN0HpcdqzEXGPHI0Mb4qjcMLrAuqP/AJ5Y9rxXCoxog4A1Gipqn/zYDe/ecpev5IxZ24B/vToK9UfE4/MpkpkN2gIbTZzJ/SLo9vLKtN0rWuVXOLuve3WOoOoIudpOlBzTQhVcS49KDWuoB0BcNxd9r2uutq4kcUJ1Qy4Gc3CrRUu4yVx5uZRPpxQb/wB1NdwG3nO4zaqM4Yl3f9RhuwYqtcSKaNiaa4t0exOFcH6VQUp1AqmHuH95X//aAAgBAQEBPyH/ABb3ki6ZiUU+SrAmOf4pQO0BHuoAkIJcthqBhJLkfg8WDBWgELlfget8xs/GQ8FUNi+dUrPxsSNmIxJUwJMNCDSZ0ryG9MSduTB1ypiDtiZOuFeI39X/AMHRb/FGdUTvchw+a8xs4ScjNuZUJjlNSgpscqtJy6Pbg40McojVKAQCBlHaouGZBDcvKL15jenvrTZjoUe+tN2uporxG/q58NF7Z8S1HTuP2vzFeY2cJW2lB1GSsnbw5C59lIllOzR7kVrsbu2p2KG0AAORYqVkd2H0bbNGII9P2qu74eJtmZzao2oCdBR6qA32zTsWqBYcObq97dq8xs4wnVv4DtL3qDceQ83xWUDvrO+XtWIc7vaT7zS0AYVQQI9zHOmF5Zouxt4anJCWSL9QUBKDccoMhsk6fqlgMCTD5pzoilXfobw5L87U15jZx1czEv0PpQO06OQkSdXpatsnHsw62Vg8sUkUYQQ7WowoRGZ2GrMFqebgI6p8pFgrOh3SM9i7V95RQ9W8JBhWqHHUqeKZkgd4oQW5i3V/1P44vLFebyUNRd2JTyYgPcm1M3GTf7H0VKWYGtkynK5aFuHvFv1PrJ94Ik2a/wDQP9UlKN0v4xgSrEl3OafKXlRFJQvhK5o4U/8AnatAOiSJZ1KQGMwODoEH83DFNmJ9gNOdFLIGCyrGxvQCpA8dPfepUAFEETv61dB7i4JsEGlEsJS0Inxj+BpFvII1c3zVzFc7IdkYpOKQiQBhat5BTBlzG3aiLQTA5nUqCGArdssuTeln+8n/2gAMAwEBAgEDAQAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACgBhgAwAAAAAAAAAAABHCCQyfIAAAAAAAAAAAADOitAB1DgAAAAAAAAAAAAKY0EiSqgAAAAAAAAAAAAYYAAMIYAAAAAAAAAAAAAAEpUSwAAAAAAAAAAAAAAAA48gwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP/aAAgBAwEBPxD+lD5W4LYUNYiWuYpLG36oTSOW5RmhnDWZN9SiLXMzwfR+r2S9dpQKy6OHI3P6VBfJroK5QdP1Xmb0sNFYOlEeZU3QVYt2vt8Vocv1hGvEUxbgI1rOb/rhdtZxMmN+dMQTucbW+WKXUloWyAdNhmmgmZBnGSfQiJhibPM2+K+wyzXsEZ0ajZIYln+bf//aAAgBAgEBPxD+lBLgsVNR3oZ/WuniCaw4Y/qqDjbVKXx6AzqG3Dl6IxxjhHoFtXEZi+dqJC1Bne/xSdJ3hvhZ/YqMsRCnsx6FDmuTrl6xJ/Nr/9oACAEBAQE/EP8AFvy5RYCUWmJ3qJj4oC7Ht+PIUS4X91QHlSDUAW1oQrnJxY2Pu4uHEBOvLVBZL59dy8pufhCx57FFnLUS51duR/JWE94pmGW80rxWyu3bIRMXdXZtkIib1i9S9U6D92sJUAR1A4L8DLym5SHiwbAFbWYm9Th37xjG7wRglAiMqtFQCwFTEyS+c4p4+4A4BB2FHxNFabmJy8yCtNzk5eJND6s+TAy6ntVgHsyPLw8GXlNymHlTt94KiPDPQXao1eXbj95VlDj2q/uvehy5GwwexRX/AHjXOavimjmGx3tIs8D0dsd9lUdoJ5gwS3x6kFsErYC6rpTxB+0Pt/dROp5RFnhTl5bc4eQ0PsUQ08Z9Qod0Y+g/balwzaN+RscooVPP+Xgqa6hDOhibjBOk0LHSWOOaSkxmjzVhI7kavCTNlpQZB39SS3JBn0mVsLVzKrDXPcGMFJVVlbq5Xhy85ucPZIlu9hRePnQ4KGHBvXUvTmXm7SvE70lQACyiJ7U+Zb8OsHxWAXs1nKerAw3rB9q360Izs14HQ9XYTizxrZNLu1pEcbiaTUKImuKmOhS/i/J14Ne8Xegbm3sFJ7U3P73PbkqMZ06d7SFT6ZEN8c97oesvP1Ph1DXbg4ha9haGxOO3459FWK5BdKtS+AkwGCxYpKx6sP0iWRs60vadYuhoOUCr4V61CujlavIDaE+YQPOJ/kefwn+ByB2Rvi1ZFbT9qOarwpx+bABoTLUUh8ptXsT06SmzPJuxAqzZEp/zfD+BiAY5JO6K0WDG0iX3VZSgQ2IWee9ABABCn5RrSTO1BCpbtRyPkQ62Q1VIVyq+9/7yf//Z" alt="小楊 Travel 品牌標誌" width="44" height="44"><span>xiaoyang.travel</span></div>
-    <div><h1>小楊的旅遊選物</h1><p>我自己訂房都用 Trip，整理給你</p></div>
+    <div>
+      <h1>小楊的旅遊選物</h1>
+      <p>我自己訂房都用 Trip，整理給你</p>
+      <div class="cover-actions">
+        <a href="#search">查機票與住宿</a>
+        <a href="#itineraries">看一日遊企劃</a>
+      </div>
+    </div>
   </header>
+  <section id="search" class="quick-search" aria-labelledby="title-quick-search">
+    <h2 id="title-quick-search">直接查旅遊</h2>
+    <div class="quick-grid">
+      <a class="quick-link" href="#" data-link="quickFlights" rel="sponsored" style="--quick-scene:var(--search-flights);--quick-crop:68% 51%"><strong>查機票</strong><small>航線與出發日</small></a>
+      <a class="quick-link" href="#" data-link="quickHotels" rel="sponsored" style="--quick-scene:var(--search-stays);--quick-crop:73% 48%"><strong>查住宿</strong><small>城市與入住日</small></a>
+      <a class="quick-link" href="#" data-link="quickTickets" rel="sponsored" style="--quick-scene:var(--search-tickets);--quick-crop:68% 50%"><strong>查門票</strong><small>景點與當地體驗</small></a>
+      <a class="quick-link" href="#" data-link="quickPackages" rel="sponsored" style="--quick-scene:var(--hongkong)"><strong>查機加酒</strong><small>一起選航班和飯店</small></a>
+    </div>
+  </section>
   <section class="quick-search" aria-labelledby="title-japan-destinations">
     <h2 id="title-japan-destinations">日本熱門目的地</h2>
-    <p>依目的地查看住宿、交通與景點門票。</p>
     <div class="quick-grid">
       <a class="quick-link" href="#route-nagoya" style="--quick-scene:var(--nagoya)"><strong>名古屋</strong><small>住宿與交通</small></a>
       <a class="quick-link" href="#route-takayama" style="--quick-scene:var(--takayama)"><strong>高山</strong><small>老街散步與跨城交通</small></a>
@@ -287,16 +379,7 @@ details .stack { margin-top: var(--gap); }
       <span class="entry-action" aria-hidden="true">查看</span>
     </a>
   </section>
-  <section class="quick-search" aria-labelledby="title-quick-search">
-    <h2 id="title-quick-search">直接查旅遊</h2>
-    <p>開啟 Trip.com 搜尋，自己選目的地和日期。</p>
-    <div class="quick-grid">
-      <a class="quick-link" href="#" data-link="quickFlights" rel="sponsored" style="--quick-scene:var(--search-flights);--quick-crop:68% 51%"><strong>查機票</strong><small>航線與出發日</small></a>
-      <a class="quick-link" href="#" data-link="quickHotels" rel="sponsored" style="--quick-scene:var(--search-stays);--quick-crop:73% 48%"><strong>查住宿</strong><small>城市與入住日</small></a>
-      <a class="quick-link" href="#" data-link="quickTickets" rel="sponsored" style="--quick-scene:var(--search-tickets);--quick-crop:68% 50%"><strong>查門票</strong><small>景點與當地體驗</small></a>
-      <a class="quick-link" href="#" data-link="quickPackages" rel="sponsored" style="--quick-scene:var(--hongkong)"><strong>查機加酒</strong><small>一起選航班和飯店</small></a>
-    </div>
-  </section>
+  <div class="catalog-nav">
   <nav class="brands" aria-label="預訂平台">
     <a class="platform" href="#destinations"><strong>Trip.com</strong><small>住宿與交通</small></a>
     <a class="platform" href="#klook"><strong>Klook</strong><small>票券與交通</small></a>
@@ -308,6 +391,7 @@ details .stack { margin-top: var(--gap); }
     <a href="#winter">冬季企劃</a>
     <a href="#social">追蹤小楊</a>
   </nav>
+  </div>
   <section id="itineraries" class="panel" aria-labelledby="title-itineraries">
     <h2 id="title-itineraries">一日遊企劃</h2>
     <nav aria-label="完整一日遊攻略" class="guide-links">
@@ -469,7 +553,7 @@ details .stack { margin-top: var(--gap); }
 
   const panels = [...document.querySelectorAll('.panel')];
   const tabs = [...document.querySelectorAll('.brands a, .shortcuts a')];
-  const navigation = document.querySelector('.brands');
+  const navigation = document.querySelector('.catalog-nav');
   function selectCategory(animate = false) {
     const previous = panels.find(panel => !panel.hidden);
     const focusWasInPanel = previous?.contains(document.activeElement);
@@ -496,6 +580,7 @@ details .stack { margin-top: var(--gap); }
     }
     // Keep the platform and section links in view when switching panels.
     if (cityRoute) cityRoute.scrollIntoView({block:'start'});
+    else if (target === '#search') city.scrollIntoView({block:'start'});
     else if (location.hash && navigation.getBoundingClientRect().top < 0)
       navigation.scrollIntoView({block:'start'});
   }
@@ -506,6 +591,9 @@ details .stack { margin-top: var(--gap); }
       if (link.hash !== location.hash) {
         history.pushState(null, '', link.hash);
         selectCategory(true);
+      }
+      if (link.closest('.cover-actions')) {
+        document.getElementById(link.hash.slice(1))?.scrollIntoView({block:'start'});
       }
     });
   }
